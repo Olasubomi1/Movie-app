@@ -31,6 +31,7 @@ class Movies extends Component {
     const genres = [{ _id: "", name: "All Genres" }, ...data];
 
     const { data: movies } = await getMovies();
+    console.log(movies);
     this.setState({ movies, genres: genres });
   }
 

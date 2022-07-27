@@ -4,7 +4,7 @@ import { apiUrl } from "../config.json";
 const apiEndpoint = apiUrl + "/movies";
 
 export function getMovies() {
-  return http.get("http://localhost:5000/api/movies");
+  return http.get(apiEndpoint);
 }
 
 export function getMovie(movieId) {
