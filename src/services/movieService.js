@@ -17,8 +17,9 @@ export function saveMovie(movie) {
     delete body._id;
     return http.put(apiEndpoint + "/" + movie._id, body);
   }
-
-  return http.post(apiEndpoint + "/" + movie._id, movie);
+  console.log("posting", movie);
+  console.log("posting id", movie._id);
+  return http.post(apiEndpoint + "/", movie);
 }
 
 export function deleteMovie(movieId) {
