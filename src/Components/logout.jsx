@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 class Logout extends Component {
+  componentDidMount() {
+    localStorage.removeItem("token");
+
+    window.location = "/";
+  }
   render() {
-    return <h1>hello world</h1>;
+    return null;
   }
 }
 
