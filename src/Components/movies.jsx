@@ -31,7 +31,7 @@ class Movies extends Component {
     const genres = [{ _id: "", name: "All Genres" }, ...data];
 
     const { data: movies } = await getMovies();
-    console.log(movies);
+    // console.log(movies);
     this.setState({ movies, genres: genres });
   }
 
@@ -102,7 +102,8 @@ class Movies extends Component {
   render() {
     const { length: count } = this.state.movies;
     const { pageSize, currentPage, sortColumn } = this.state;
-
+    console.log(this.props);
+    const { user } = this.props;
     if (count === 0) return <h1>There are no movies in the database.</h1>;
 
     const { totalCount, data: movies } = this.getPagedData();
@@ -117,13 +118,15 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <Link
-            to="/movies/new"
-            className="btn btn-primary btn-lg mg-10px"
-            style={{ marginBottom: "20px" }}
-          >
-            New Movies
-          </Link>
+          {user && (
+            <Link
+              to="/movies/new"
+              className="btn btn-primary btn-lg mg-10px"
+              style={{ marginBottom: "20px" }}
+            >
+              New Movies
+            </Link>
+          )}
           <h1>Showing {totalCount} movies in the database</h1>
           <SearchBox
             value={this.state.searchQuery}
